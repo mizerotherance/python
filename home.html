@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html> 
+<body>
+    {% extends 'profile.html'%}
+    {% block content %}
+    <div class="home"> 
+    <h3>
+       <a href = "{{ url_for('home') }}">Comments - Flask 
+          SQLAlchemy example</a>
+    </h3>
+    
+    <hr/>
+    {%- for message in get_flashed_messages() %}
+       {{ message }}
+    {%- endfor %}
+      
+    <h3>Students (<a href = "{{ url_for('about') }}">Add Student
+       </a>)</h3>
+    
+    <table>
+       <thead>
+          <tr>
+             <th>Name</th>
+             <th>City</th>
+             <th>Address</th>
+             <th>Pin</th>
+             <th>class_name</th>
+          </tr>
+       </thead>
+       
+       <tbody>
+          {% for student in schools %}
+          {% for class in schools %}
+          
+          <tr>
+             <td>{{ student.name }}</td>
+             <td>{{ student.city }}</td>
+             <td>{{ student.addr }}</td>
+             <td>{{ student.pin }}</td>
+             <td>{{ class.class_name }}</td>
+          </tr>
+       {% endfor %}
+       {% endfor %}
+       </tbody>
+    </table>
+</div>
+    {% endblock %} 
+ </body> 
+</html> 
