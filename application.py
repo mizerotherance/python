@@ -47,7 +47,8 @@ class classes(db.Model):
 
 @app.route('/')
 def home():
-    return render_template('home.html', schools=students.query.with_entities(classes).all())
+     schools = students.query.all()
+  return render_template('home.html', schools=schools, classes=classes.query.all())
 
 
 @app.route('/about', methods=['GET', 'POST'])
